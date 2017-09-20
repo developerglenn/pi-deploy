@@ -20,13 +20,20 @@ Steps to creating a Raspberry Pi configured image.
      * `d 2`
      * `n primary 2 <start> <stop>`
      * `n primary 3 <start> <stop>`
+     * `t 3 7`
      * `w`
    * `sudo e2fsck -f /dev/sdb2` (N.B. sdb2, the root partition)
    * `sudo resize2fs /dev/sdb2` (N.B. sdb2, the root partition)
    * `sudo mkfs.ntfs /dev/sdb3` (N.B. sdb3, the data partition)
-4. Setup SSH
+4. Disable auto-expanding OS partition
+   * From the /boot/cmdlines.txt file, remove `init=/usr/lib/raspi-config/init_resize.sh`
+5. Setup SSH
    * `touch /run/media/<user>/boot/ssh` (N.B., the boot partition)
-5. Setup Wireless
+6. Mount the data storage partition
+   * ???
+7. Secure default users
+   * Change password
+   * Exchange keys for ssh
+8. Setup Wireless
    * Not required if using a wired Ethernet connection
-     * Pi will automatically request an IP address from the DHCP server
    * ???
