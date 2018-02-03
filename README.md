@@ -29,11 +29,17 @@ Steps to creating a Raspberry Pi configured image.
    * From the /boot/cmdlines.txt file, remove `init=/usr/lib/raspi-config/init_resize.sh`
 5. Setup SSH
    * `touch /run/media/<user>/boot/ssh` (N.B., the boot partition)
-6. Mount the data storage partition
-   * ???
+6. Download additional packages
+   * `mkdir /run/media/<user>/<os partition>/opt/deb-installers`
+   * `wget ntfs-3g.deb`
+   * `cp ntfs-3g.deb /run/media/<user>/<os partition>/opt/deb-installers`
 7. Secure default users
    * Change password
    * Exchange keys for ssh
-8. Setup Wireless
+8. Install additional packages
+   * `deb -i ntfs-3g.deb`    #Install NTFS
+   * `sudo mkdir /data       #Make 
+   * `sudo mount -t ntfs /dev/mmcblk0p3`
+9. Setup Wireless
    * Not required if using a wired Ethernet connection
    * ???
